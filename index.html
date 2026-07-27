@@ -11,7 +11,7 @@
 <meta property="og:locale" content="en_US">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@200;300;400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@200;300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FFFFFF;
@@ -41,6 +41,7 @@ a{color:inherit}
 a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 img{display:block;max-width:100%}
 
+.fx-defs{position:absolute;width:0;height:0;overflow:hidden}
 .skip-link{
   position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;
   padding:10px 18px;z-index:200;font-weight:500;
@@ -114,8 +115,29 @@ section{padding:clamp(58px,8vw,104px) var(--gutter)}
 .name{
   display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
   font-family:"Poppins","Inter",sans-serif;
-  font-weight:200;font-size:clamp(25px,3.2vw,40px);
-  letter-spacing:-.03em;line-height:1.1;
+  font-weight:600;font-size:clamp(25px,3.2vw,40px);
+  letter-spacing:-.02em;line-height:1.1;
+}
+/* degraded-print name */
+.name-fx{position:relative;display:inline-block;white-space:nowrap}
+.name-fx > span{display:block}
+.fx-base{
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.72) 9%,#000 21%,#000 79%,rgba(0,0,0,.72) 91%,rgba(0,0,0,.28) 100%);
+          mask-image:linear-gradient(90deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.72) 9%,#000 21%,#000 79%,rgba(0,0,0,.72) 91%,rgba(0,0,0,.28) 100%);
+}
+.fx-grain,.fx-speckle{
+  position:absolute;left:0;top:0;width:100%;
+  pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 12%,transparent 30%,transparent 70%,#000 88%,#000 100%);
+          mask-image:linear-gradient(90deg,#000 0%,#000 12%,transparent 30%,transparent 70%,#000 88%,#000 100%);
+}
+.fx-grain{filter:url(#nameGrain)}
+.fx-speckle{filter:url(#nameSpeckle);opacity:.9}
+@media (max-width:480px){
+  .fx-grain,.fx-speckle{
+    -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 8%,transparent 26%,transparent 74%,#000 92%,#000 100%);
+            mask-image:linear-gradient(90deg,#000 0%,#000 8%,transparent 26%,transparent 74%,#000 92%,#000 100%);
+  }
 }
 .name .aka{
   font-family:"IBM Plex Mono",monospace;font-weight:400;
@@ -160,14 +182,14 @@ dl.spec dd b{font-weight:500}
 .intro-contact a:hover{opacity:.5}
 
 /* ---------- about ---------- */
-.about-body{max-width:66ch}
+.about-body{max-width:min(92ch,72vw)}
 .about-body p{
-  font-size:14.5px;line-height:1.95;color:var(--ink);font-weight:300;
-  text-wrap:pretty;
+  font-size:14.5px;line-height:2;color:var(--ink);font-weight:300;
   hyphens:none;-webkit-hyphens:none;
   overflow-wrap:normal;word-break:normal;
 }
 @supports (text-wrap:pretty){.about-body p{text-wrap:pretty}}
+@media (max-width:900px){.about-body{max-width:100%}}
 .about-body p + p{margin-top:16px}
 .about-body p:last-child{
   margin-top:22px;padding-top:16px;border-top:1px solid var(--hair);
@@ -220,6 +242,38 @@ dl.spec dd b{font-weight:500}
 }
 .entry-keys span{margin-right:12px;white-space:nowrap;display:inline-block}
 
+/* ---------- "let's talk" cursor ---------- */
+.cursor-talk{
+  position:fixed;top:0;left:0;z-index:999;
+  pointer-events:none;
+  transform:translate3d(-100px,-100px,0);
+  will-change:transform;
+}
+.cursor-talk span{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:8.5px;font-weight:500;letter-spacing:.1em;line-height:1.4;
+  text-transform:uppercase;text-align:center;
+  opacity:0;transform:scale(.35);
+  transition:opacity .18s ease,transform .28s cubic-bezier(.2,.85,.25,1);
+}
+.cursor-talk span::after{
+  content:"";position:absolute;top:-9px;right:-9px;
+  width:44px;height:44px;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 0 0.35 0.75 1'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(circle at 12% 88%,#000 18%,rgba(0,0,0,.6) 42%,transparent 72%);
+          mask-image:radial-gradient(circle at 12% 88%,#000 18%,rgba(0,0,0,.6) 42%,transparent 72%);
+}
+.cursor-talk.on span{opacity:1;transform:scale(1)}
+body.talk-cursor .hover-talk,
+body.talk-cursor .hover-talk:hover{cursor:none}
+
+.vol-body li{max-width:74ch}
+
 /* ---------- footer ---------- */
 footer{
   border-top:1px solid var(--ink);
@@ -266,6 +320,23 @@ footer{
 </style>
 </head>
 <body>
+<svg class="fx-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="nameGrain" x="-12%" y="-25%" width="124%" height="150%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feGaussianBlur in="d" stdDeviation="0.45" result="b"/>
+    <feComponentTransfer in="b">
+      <feFuncA type="discrete" tableValues="0 0 0.15 0.4 0.6 0.8 1"/>
+    </feComponentTransfer>
+  </filter>
+  <filter id="nameSpeckle" x="-18%" y="-40%" width="136%" height="180%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="4" seed="19" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="8" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feComponentTransfer in="d">
+      <feFuncA type="discrete" tableValues="0 0 0 1 0 0 1 0 1 0"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header id="header">
@@ -274,6 +345,7 @@ footer{
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
+    <a href="#volunteer">Volunteer</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -292,7 +364,11 @@ footer{
       <p class="mono eyebrow">Curriculum Vitae — 2026</p>
 
       <h1 class="name">
-        <span>Chaeyeon Yoo</span>
+        <span class="name-fx">
+          <span class="fx-base">Chaeyeon Yoo</span>
+          <span class="fx-grain" aria-hidden="true">Chaeyeon Yoo</span>
+          <span class="fx-speckle" aria-hidden="true">Chaeyeon Yoo</span>
+        </span>
         <span class="aka">aka Sia</span>
       </h1>
 
@@ -305,7 +381,7 @@ footer{
         </div>
         <div>
           <dt>Skills</dt>
-          <dd><span class="nw">Go-To-Market Strategy</span> <span class="sep">·</span> <span class="nw">Content Localization</span> <span class="sep">·</span> <span class="nw">Influencer Collaboration</span> <span class="sep">·</span> <span class="nw">Off-line Events</span></dd>
+          <dd><span class="nw">Go-To-Market Strategy</span> <span class="sep">·</span> <span class="nw">Content Marketing</span> <span class="sep">·</span> <span class="nw">Localization</span> <span class="sep">·</span> <span class="nw">Influencer Collaboration</span> <span class="sep">·</span> <span class="nw">Off-line Events</span> <span class="sep">·</span> <span class="nw">Project Management</span></dd>
         </div>
         <div>
           <dt>Language</dt>
@@ -314,8 +390,8 @@ footer{
       </dl>
 
       <div class="intro-contact">
-        <a href="mailto:cyyu.sia@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/chaeyeon-yoo-33098a247/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="hover-talk" href="mailto:cyyu.sia@gmail.com">Email</a>
+        <a class="hover-talk" href="https://www.linkedin.com/in/chaeyeon-yoo-33098a247/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
 
@@ -331,7 +407,8 @@ footer{
     <div class="about-body reveal">
       <p>My career has focused on connecting Korean businesses with global markets, particularly Mexico and Latin America. With a deep understanding of local markets and cultural nuances, I help brands adapt to new audiences by developing localized strategies and building meaningful connections with local communities.</p>
       <p>I have collaborated with global teams across Korea, the United States, Mexico, and Latin America, leading marketing initiatives and cross-functional projects in the beauty, healthcare, and entertainment industries. My experience spans multiple stages of business growth from market entry and brand communications to campaign execution and market expansion, developing and implementing strategies tailored to each phase.</p>
-      <p>In addition&nbsp;- I have managed social media channels with over 45k followers across Latin America, partnered with local brands, and helped grow the presence of multiple creators. I specialize in planning and producing content that resonates with target audiences, creating communication strategies that connect brands with people across cultures.</p>
+      <p>In addition&nbsp;- I have managed social media channels with over 45k followers across Latin America, partnered with local brands, and helped grow the presence of multiple creators.</p>
+      <p>I specialize in planning and producing content that resonates with target audiences, creating communication strategies that connect brands with people across cultures.</p>
       <p>I value creative freedom, but I care just as much about delivering results.</p>
     </div>
   </div>
@@ -355,7 +432,7 @@ footer{
       <div class="entry-body">
         <ul>
           <li>Planned and executed market entry strategies for Korean beauty brands in Mexico.</li>
-          <li>Identified influencers aligned with each brand and managed collaboration campaigns.</li>
+          <li>Identified influencers aligned with each brand and achieved an 80% content acquisition rate through unpaid product seeding with local influencers.</li>
           <li>Managed owned media channels and localized brand identity.</li>
           <li>Planned marketing strategies across channels and funnel stages, contributing to revenue growth.</li>
           <li>Identified sales channels and generated customer leads.</li>
@@ -377,7 +454,7 @@ footer{
           <li>Served as a bridge between HQ and Latin American teams, adapting global strategies to local market conditions.</li>
           <li>Built CRM marketing across the customer lifecycle — from lead nurturing to customer retention — in collaboration with HQ and sales teams.</li>
           <li>Planned and managed exhibitions, booth design, and on-site operations.</li>
-          <li>Executed influencer collaboration campaigns to increase brand awareness.</li>
+          <li>Led a medical influencer campaign in Mexico, generating 266K views and 13K+ engagements across TikTok &amp; Meta.</li>
         </ul>
         <p class="entry-keys"><span>#Localization</span><span>#CRM_Marketing</span><span>#Exhibition</span><span>#HQ_Communication</span><span>#Influencer_Collaboration</span></p>
       </div>
@@ -449,8 +526,7 @@ footer{
 
     <article class="entry reveal">
       <div class="entry-meta">
-        <span class="entry-period">M.Des</span>
-        <span class="entry-place">Seoul, Korea</span>
+        <span class="entry-period">M.Des, Korea</span>
         <span class="entry-position">Design Management</span>
         <span class="entry-org">Hongik University</span>
       </div>
@@ -463,14 +539,32 @@ footer{
 
     <article class="entry reveal">
       <div class="entry-meta">
-        <span class="entry-period">B.A</span>
-        <span class="entry-place">Seoul, Korea</span>
+        <span class="entry-period">B.A, Korea</span>
         <span class="entry-position">Industrial Design</span>
         <span class="entry-org">Hanyang University</span>
       </div>
-      <div class="entry-body"></div>
+      <div class="entry-body">
+        <ul>
+          <li>Participated in the Sungkyunkwan University Campus Town Startup Program, contributed to video direction for the P4G Seoul Summit, and planned an urban regeneration exhibition in Changsin-dong.</li>
+        </ul>
+      </div>
     </article>
 
+  </div>
+</section>
+
+<!-- ===== VOLUNTEER ===== -->
+<section id="volunteer" aria-labelledby="vol-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="vol-title">Volunteer Experience</h2>
+    </div>
+    <div class="entry-body vol-body reveal">
+      <ul>
+        <li>Conducted career-planning workshops at 40+ public middle and high schools in rural communities.</li>
+        <li>Planned and operated 2 programs for the Hyundai Motor Chung Mong-Koo Foundation.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -479,8 +573,8 @@ footer{
 <footer id="contact">
   <div class="footer-inner">
     <div class="footer-links">
-      <a href="mailto:cyyu.sia@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/chaeyeon-yoo-33098a247/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="hover-talk" href="mailto:cyyu.sia@gmail.com">Email</a>
+      <a class="hover-talk" href="https://www.linkedin.com/in/chaeyeon-yoo-33098a247/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div class="footer-meta">
       <span>© 2026 Chaeyeon Yoo</span>
@@ -494,6 +588,27 @@ const header=document.getElementById('header');
 if(header){
   addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>10),{passive:true});
 }
+(function(){
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  const links=document.querySelectorAll('.hover-talk');
+  if(!links.length)return;
+  const el=document.createElement('div');
+  el.className='cursor-talk';el.setAttribute('aria-hidden','true');
+  el.innerHTML='<span>Let\u2019s<br>connect</span>';
+  document.body.appendChild(el);
+  document.body.classList.add('talk-cursor');
+  let x=0,y=0,raf=null;
+  const draw=()=>{el.style.transform='translate3d('+x+'px,'+y+'px,0)';raf=null};
+  const move=e=>{x=e.clientX;y=e.clientY;if(!raf)raf=requestAnimationFrame(draw)};
+  addEventListener('mousemove',move,{passive:true});
+  links.forEach(a=>{
+    a.addEventListener('mouseenter',e=>{x=e.clientX;y=e.clientY;draw();el.classList.add('on')});
+    a.addEventListener('mouseleave',()=>el.classList.remove('on'));
+  });
+  addEventListener('blur',()=>el.classList.remove('on'));
+  document.addEventListener('mouseleave',()=>el.classList.remove('on'));
+})();
+
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce&&'IntersectionObserver'in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{
