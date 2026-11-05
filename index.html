@@ -629,6 +629,10 @@ footer{
           <div class="wcard"><video src="assets/work/demaf-DfCn-J3RSvQ.mp4" poster="assets/work/demaf-DfCn-J3RSvQ.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="DEMAF content by @jennifer_jior"></video></div>
           <figcaption class="wcap">@jennifer_jior</figcaption>
         </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <div class="wcard"><video src="assets/work/demaf-De3X-bwAf_L.mp4" poster="assets/work/demaf-De3X-bwAf_L.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="DEMAF content by @danydanymx"></video></div>
+          <figcaption class="wcap">@danydanymx</figcaption>
+        </figure>
     </div>
   </section>
   <section class="wsec" aria-labelledby="w-kift">
@@ -760,7 +764,14 @@ function showTab(name,updateUrl){
   });
   for(const k in panels)panels[k].hidden=k!==name;
   if(updateUrl)history.replaceState(null,'',name==='work'?'#work':location.pathname+location.search);
-  if(name==='work')requestAnimationFrame(updateRails);
+  if(name==='work'){
+    requestAnimationFrame(updateRails);
+    // videos were registered while this panel was hidden: register again so the
+    // ones now on screen start playing right away
+    if(vio)vids.forEach(v=>{vio.unobserve(v);vio.observe(v)});
+  }else{
+    vids.forEach(v=>v.pause());
+  }
 }
 tabs.forEach((t,i)=>{
   t.addEventListener('click',()=>showTab(t.dataset.tab,true));
@@ -796,8 +807,9 @@ addEventListener('resize',updateRails);
 
 // ---- AI videos: play only while on screen (muted, looping) ----
 const vids=[...document.querySelectorAll('.wcard video')];
+let vio=null;
 if(!reduce&&'IntersectionObserver'in window){   // reduced motion: posters stay still
-  const vio=new IntersectionObserver(es=>es.forEach(e=>{
+  vio=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting){const p=e.target.play();if(p)p.catch(()=>{})}else e.target.pause();
   }),{threshold:.35});
   vids.forEach(v=>vio.observe(v));
