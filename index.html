@@ -53,6 +53,25 @@ img{display:block;max-width:100%}
   color:var(--gray);
 }
 
+/* ---------- top row: tabs + clocks (static, not a fixed bar) ---------- */
+.topbar{padding:clamp(18px,2.6vw,28px) var(--gutter) 0}
+.topbar-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px 24px;flex-wrap:wrap;
+}
+.tabs{display:flex;gap:clamp(18px,2.4vw,28px)}
+.tab{
+  appearance:none;background:none;border:0;cursor:pointer;
+  padding:4px 0;border-bottom:1px solid transparent;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--faint);
+  transition:color .2s,border-color .2s;
+}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tab:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.panel[hidden]{display:none}
+
 /* ---------- local clocks: Mexico City × Seoul ---------- */
 .eyebrow-row{
   display:flex;justify-content:space-between;align-items:baseline;
@@ -94,10 +113,10 @@ section{padding:clamp(58px,8vw,104px) var(--gutter)}
 
 /* ---------- intro ---------- */
 .intro{
-  padding-top:clamp(44px,7vw,88px);
+  padding-top:clamp(34px,5vw,64px);
   padding-bottom:clamp(48px,6vw,88px);
 }
-.intro-grid{max-width:820px}
+.intro-grid .profile{max-width:820px}
 
 .profile{padding-top:4px}
 .name{
@@ -226,6 +245,89 @@ dl.spec dd b{font-weight:500}
 }
 .entry-keys span{margin-right:12px;white-space:nowrap;display:inline-block}
 
+
+/* ---------- work: one rail per project, fixed card height ---------- */
+:root{--card-h:clamp(340px,60vh,540px)}
+@media (max-width:520px){:root{--card-h:min(54vh,400px)}}
+section.wsec{padding:clamp(34px,5vw,64px) 0 clamp(14px,2vw,24px)}
+section.wsec:last-child{padding-bottom:clamp(58px,8vw,104px)}
+.wsec-head{padding:0 var(--gutter);max-width:calc(var(--max) + 2 * var(--gutter));margin:0 auto}
+.wsec-top{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:34px}
+.wsec-num{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.2em;color:var(--faint);
+}
+.wsec-name{
+  margin-top:6px;
+  font-family:"Poppins","Inter",sans-serif;font-weight:200;
+  font-size:clamp(30px,4.4vw,56px);letter-spacing:-.03em;line-height:1.08;
+}
+.wsec-meta{
+  margin-top:12px;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gray);
+}
+.wsec-arrows{display:flex;gap:6px}
+.wsec-arrows[hidden]{display:none}
+.warrow{
+  appearance:none;cursor:pointer;
+  width:34px;height:34px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--hair);background:#fff;color:var(--ink);
+  font-size:14px;line-height:1;
+  transition:border-color .2s,opacity .2s;
+}
+.warrow:hover:not(:disabled){border-color:var(--ink)}
+.warrow:disabled{opacity:.3;cursor:default}
+.warrow:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (pointer:coarse){.wsec-arrows{display:none!important}}
+
+.wrail{
+  --edge:max(var(--gutter), calc((100% - var(--max)) / 2));
+  margin-top:clamp(20px,2.6vw,32px);
+  display:flex;gap:clamp(10px,1.2vw,16px);
+  overflow-x:auto;overscroll-behavior-x:contain;
+  padding:0 var(--edge) 6px;
+  scroll-padding-inline:var(--edge);
+  scroll-snap-type:x proximity;
+  scrollbar-width:none;
+}
+.wrail::-webkit-scrollbar{display:none}
+.wrail:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+
+.witem{
+  flex:none;margin:0;scroll-snap-align:start;
+  width:min(calc(var(--card-h) * var(--ar)), calc(100vw - 2 * var(--gutter)));
+}
+.wcard{
+  position:relative;display:block;width:100%;height:var(--card-h);
+  overflow:hidden;background:#F2F2F2;color:inherit;text-decoration:none;
+}
+.wcard img,.wcard video{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s ease;
+}
+a.wcard:hover img{transform:scale(1.03)}
+a.wcard:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wtag{
+  position:absolute;left:10px;top:10px;
+  padding:4px 7px 3px;background:#fff;color:var(--ink);
+  font-family:"IBM Plex Mono",monospace;font-size:9px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;line-height:1.4;
+}
+.wgo{
+  position:absolute;right:10px;top:10px;
+  width:24px;height:24px;border-radius:50%;background:#fff;color:var(--ink);
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+  opacity:0;transition:opacity .2s;
+}
+a.wcard:hover .wgo,a.wcard:focus-visible .wgo{opacity:1}
+@media (hover:none){.wgo{opacity:1}}
+.wcap{
+  margin-top:10px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--gray);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
 /* ---------- footer ---------- */
 footer{
   border-top:1px solid var(--ink);
@@ -260,7 +362,8 @@ footer{
 
 /* ---------- print ---------- */
 @media print{
-  .skip-link,.clock{display:none}
+  .skip-link,.topbar,#work{display:none!important}
+  #panel-about{display:block!important}
   body{font-size:10pt}
   section{padding:12pt 0;break-inside:avoid}
   .intro{padding-top:0}
@@ -272,7 +375,24 @@ footer{
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="tabs" role="tablist" aria-label="Page sections">
+      <button class="tab" type="button" role="tab" id="tab-about" data-tab="about" aria-controls="panel-about" aria-selected="true">About</button>
+      <button class="tab" type="button" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="false" tabindex="-1">Work</button>
+    </div>
+    <p class="clock" aria-label="Current local time in Mexico City and Seoul">
+      <span>CST</span><span class="clock-time" id="cst-clock">--:--:--</span>
+      <span class="clock-x" aria-hidden="true">×</span>
+      <span>KST</span><span class="clock-time" id="kst-clock">--:--:--</span>
+    </p>
+  </div>
+</div>
+
 <main id="main">
+
+<!-- ===== ABOUT (tab panel) ===== -->
+<div class="panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
 
 <!-- ===== INTRO ===== -->
 <section class="intro" id="top" aria-label="Profile">
@@ -282,11 +402,6 @@ footer{
     <div class="profile reveal">
       <div class="eyebrow-row">
         <p class="mono eyebrow">Curriculum Vitae — 2026</p>
-        <p class="clock" aria-label="Current local time in Mexico City and Seoul">
-          <span>CST</span><span class="clock-time" id="cst-clock">--:--:--</span>
-          <span class="clock-x" aria-hidden="true">×</span>
-          <span>KST</span><span class="clock-time" id="kst-clock">--:--:--</span>
-        </p>
       </div>
 
       <h1 class="name">
@@ -458,11 +573,12 @@ footer{
       <div class="entry-meta">
         <span class="entry-period">M.Des</span>
         <span class="entry-place">Seoul, Korea</span>
-        <span class="entry-position">Design Management · Branding &amp; Marketing Lab</span>
+        <span class="entry-position">Design Management</span>
         <span class="entry-org">Hongik University</span>
       </div>
       <div class="entry-body">
         <ul>
+          <li>Branding &amp; Marketing Lab</li>
           <li>Research on hydrogen fuel-based mobility and hub design proposal — Hyundai Motors.</li>
         </ul>
       </div>
@@ -480,6 +596,248 @@ footer{
 
   </div>
 </section>
+
+</div>
+
+<!-- ===== WORK (tab panel) ===== -->
+<div class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
+
+  <section class="wsec" aria-labelledby="w-maru">
+    <div class="wsec-head">
+      <div class="wsec-top">
+        <span class="wsec-num">01</span>
+        <div class="wsec-arrows" hidden>
+          <button class="warrow" type="button" data-dir="-1" aria-label="Scroll Maru Cafe left">←</button>
+          <button class="warrow" type="button" data-dir="1" aria-label="Scroll Maru Cafe right">→</button>
+        </div>
+      </div>
+      <h2 class="wsec-name" id="w-maru">Maru Cafe</h2>
+      <p class="wsec-meta">Instagram · 3 Reels · 1 Post</p>
+    </div>
+    <div class="wrail" tabindex="0" role="region" aria-label="Maru Cafe">
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DesfutqjmfI/" target="_blank" rel="noopener" aria-label="Maru Cafe — Reel by @marucafe.mx, opens Instagram">
+            <img src="assets/work/maru-DesfutqjmfI.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@marucafe.mx</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.8000">
+          <a class="wcard" href="https://www.instagram.com/p/Defnuc8HzRr/" target="_blank" rel="noopener" aria-label="Maru Cafe — Post by @marucafe.mx, opens Instagram">
+            <img src="assets/work/maru-Defnuc8HzRr.jpg" alt="" width="880" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Post</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@marucafe.mx</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5627">
+          <a class="wcard" href="https://www.instagram.com/reel/Ddx2FQ_uG2W/" target="_blank" rel="noopener" aria-label="Maru Cafe — Reel by @cassia.ahn, opens Instagram">
+            <img src="assets/work/maru-Ddx2FQ_uG2W.jpg" alt="" width="619" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@cassia.ahn</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DeQJt9_v24z/" target="_blank" rel="noopener" aria-label="Maru Cafe — Reel by @eric.leines, opens Instagram">
+            <img src="assets/work/maru-DeQJt9_v24z.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@eric.leines</figcaption>
+        </figure>
+    </div>
+  </section>
+  <section class="wsec" aria-labelledby="w-demaf">
+    <div class="wsec-head">
+      <div class="wsec-top">
+        <span class="wsec-num">02</span>
+        <div class="wsec-arrows" hidden>
+          <button class="warrow" type="button" data-dir="-1" aria-label="Scroll DEMAF left">←</button>
+          <button class="warrow" type="button" data-dir="1" aria-label="Scroll DEMAF right">→</button>
+        </div>
+      </div>
+      <h2 class="wsec-name" id="w-demaf">DEMAF</h2>
+      <p class="wsec-meta">Instagram · 4 Reels</p>
+    </div>
+    <div class="wrail" tabindex="0" role="region" aria-label="DEMAF">
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DfVMSU5RRus/" target="_blank" rel="noopener" aria-label="DEMAF — Reel by @rikottamia, opens Instagram">
+            <img src="assets/work/demaf-DfVMSU5RRus.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@rikottamia</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DfIpLBbhlLG/" target="_blank" rel="noopener" aria-label="DEMAF — Reel by @nandabyfer, opens Instagram">
+            <img src="assets/work/demaf-DfIpLBbhlLG.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@nandabyfer</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/De8XTguxyb9/" target="_blank" rel="noopener" aria-label="DEMAF — Reel by @thishyori, opens Instagram">
+            <img src="assets/work/demaf-De8XTguxyb9.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@thishyori</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DfCn-J3RSvQ/" target="_blank" rel="noopener" aria-label="DEMAF — Reel by @jennifer_jior, opens Instagram">
+            <img src="assets/work/demaf-DfCn-J3RSvQ.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@jennifer_jior</figcaption>
+        </figure>
+    </div>
+  </section>
+  <section class="wsec" aria-labelledby="w-kift">
+    <div class="wsec-head">
+      <div class="wsec-top">
+        <span class="wsec-num">03</span>
+        <div class="wsec-arrows" hidden>
+          <button class="warrow" type="button" data-dir="-1" aria-label="Scroll Kift left">←</button>
+          <button class="warrow" type="button" data-dir="1" aria-label="Scroll Kift right">→</button>
+        </div>
+      </div>
+      <h2 class="wsec-name" id="w-kift">Kift</h2>
+      <p class="wsec-meta">Instagram · 2 Reels</p>
+    </div>
+    <div class="wrail" tabindex="0" role="region" aria-label="Kift">
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DfQIJMPOs2t/" target="_blank" rel="noopener" aria-label="Kift — Reel by @cassia.ahn, opens Instagram">
+            <img src="assets/work/kift-DfQIJMPOs2t.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@cassia.ahn</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DevMjUPJ0ud/" target="_blank" rel="noopener" aria-label="Kift — Reel by @lorena.contrs, opens Instagram">
+            <img src="assets/work/kift-DevMjUPJ0ud.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@lorena.contrs</figcaption>
+        </figure>
+    </div>
+  </section>
+  <section class="wsec" aria-labelledby="w-vatech">
+    <div class="wsec-head">
+      <div class="wsec-top">
+        <span class="wsec-num">04</span>
+        <div class="wsec-arrows" hidden>
+          <button class="warrow" type="button" data-dir="-1" aria-label="Scroll Vatech México left">←</button>
+          <button class="warrow" type="button" data-dir="1" aria-label="Scroll Vatech México right">→</button>
+        </div>
+      </div>
+      <h2 class="wsec-name" id="w-vatech">Vatech México</h2>
+      <p class="wsec-meta">Instagram · 2 Reels</p>
+    </div>
+    <div class="wrail" tabindex="0" role="region" aria-label="Vatech México">
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DcmNlsjDsci/" target="_blank" rel="noopener" aria-label="Vatech México — Reel by @vatech.mexico, opens Instagram">
+            <img src="assets/work/vatech-DcmNlsjDsci.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@vatech.mexico</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DdHrMiDkd-Z/" target="_blank" rel="noopener" aria-label="Vatech México — Reel by @vatech.mexico, opens Instagram">
+            <img src="assets/work/vatech-DdHrMiDkd-Z.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@vatech.mexico</figcaption>
+        </figure>
+    </div>
+  </section>
+  <section class="wsec" aria-labelledby="w-personal">
+    <div class="wsec-head">
+      <div class="wsec-top">
+        <span class="wsec-num">05</span>
+        <div class="wsec-arrows" hidden>
+          <button class="warrow" type="button" data-dir="-1" aria-label="Scroll Personal left">←</button>
+          <button class="warrow" type="button" data-dir="1" aria-label="Scroll Personal right">→</button>
+        </div>
+      </div>
+      <h2 class="wsec-name" id="w-personal">Personal</h2>
+      <p class="wsec-meta">Instagram · 3 Reels</p>
+    </div>
+    <div class="wrail" tabindex="0" role="region" aria-label="Personal">
+        <figure class="witem" style="--ar:0.5627">
+          <a class="wcard" href="https://www.instagram.com/reel/DY_YXJptcKC/" target="_blank" rel="noopener" aria-label="Personal — Reel by @ludeseul.kr, opens Instagram">
+            <img src="assets/work/personal-DY_YXJptcKC.jpg" alt="" width="619" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@ludeseul.kr</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <a class="wcard" href="https://www.instagram.com/reel/DZ9Ly_AtN0T/" target="_blank" rel="noopener" aria-label="Personal — Reel by @ludeseul.kr, opens Instagram">
+            <img src="assets/work/personal-DZ9Ly_AtN0T.jpg" alt="" width="618" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@ludeseul.kr</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5627">
+          <a class="wcard" href="https://www.instagram.com/reel/DZcBzxbtk23/" target="_blank" rel="noopener" aria-label="Personal — Reel by @ludeseul.kr, opens Instagram">
+            <img src="assets/work/personal-DZcBzxbtk23.jpg" alt="" width="619" height="1100" loading="lazy" decoding="async">
+            <span class="wtag">Reel</span>
+            <span class="wgo" aria-hidden="true">↗</span>
+          </a>
+          <figcaption class="wcap">@ludeseul.kr</figcaption>
+        </figure>
+    </div>
+  </section>
+  <section class="wsec" aria-labelledby="w-ai">
+    <div class="wsec-head">
+      <div class="wsec-top">
+        <span class="wsec-num">06</span>
+        <div class="wsec-arrows" hidden>
+          <button class="warrow" type="button" data-dir="-1" aria-label="Scroll AI Contents left">←</button>
+          <button class="warrow" type="button" data-dir="1" aria-label="Scroll AI Contents right">→</button>
+        </div>
+      </div>
+      <h2 class="wsec-name" id="w-ai">AI Contents</h2>
+      <p class="wsec-meta">3 Videos · 1 Image</p>
+    </div>
+    <div class="wrail" tabindex="0" role="region" aria-label="AI Contents">
+        <figure class="witem" style="--ar:1.7778">
+          <div class="wcard">
+            <video src="assets/work/ai-1.mp4" poster="assets/work/ai-1-poster.jpg" muted loop playsinline preload="none" aria-label="AI-generated video 1"></video>
+            <span class="wtag">Video</span>
+          </div>
+        </figure>
+        <figure class="witem" style="--ar:1.0000">
+          <div class="wcard">
+            <video src="assets/work/ai-2.mp4" poster="assets/work/ai-2-poster.jpg" muted loop playsinline preload="none" aria-label="AI-generated video 2"></video>
+            <span class="wtag">Video</span>
+          </div>
+        </figure>
+        <figure class="witem" style="--ar:0.5639">
+          <div class="wcard">
+            <video src="assets/work/ai-3.mp4" poster="assets/work/ai-3-poster.jpg" muted loop playsinline preload="none" aria-label="AI-generated video 3"></video>
+            <span class="wtag">Video</span>
+          </div>
+        </figure>
+        <figure class="witem" style="--ar:0.6660">
+          <div class="wcard">
+            <img src="assets/work/ai-4.jpg" alt="AI-generated beauty editorial image" width="999" height="1500" loading="lazy" decoding="async">
+            <span class="wtag">Image</span>
+          </div>
+        </figure>
+    </div>
+  </section>
+
+</div>
 
 </main>
 
@@ -521,6 +879,65 @@ footer{
 })();
 
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---- tabs: About / Work (#work in the URL opens Work directly) ----
+const tabs=[...document.querySelectorAll('.tab')];
+const panels={about:document.getElementById('panel-about'),work:document.getElementById('work')};
+function showTab(name,updateUrl){
+  if(!panels[name])name='about';
+  tabs.forEach(t=>{
+    const on=t.dataset.tab===name;
+    t.setAttribute('aria-selected',on);
+    t.tabIndex=on?0:-1;
+  });
+  for(const k in panels)panels[k].hidden=k!==name;
+  if(updateUrl)history.replaceState(null,'',name==='work'?'#work':location.pathname+location.search);
+  if(name==='work')requestAnimationFrame(updateRails);
+}
+tabs.forEach((t,i)=>{
+  t.addEventListener('click',()=>showTab(t.dataset.tab,true));
+  t.addEventListener('keydown',e=>{
+    if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+    const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];
+    n.focus();showTab(n.dataset.tab,true);
+  });
+});
+addEventListener('hashchange',()=>showTab(location.hash==='#work'?'work':'about',false));
+
+// ---- work rails: arrow buttons, hidden when a rail doesn't overflow ----
+const rails=[...document.querySelectorAll('.wsec')].map(sec=>({
+  rail:sec.querySelector('.wrail'),
+  arrows:sec.querySelector('.wsec-arrows'),
+  btns:[...sec.querySelectorAll('.warrow')]
+}));
+function updateRails(){
+  rails.forEach(({rail,arrows,btns})=>{
+    const max=rail.scrollWidth-rail.clientWidth;
+    arrows.hidden=max<=2;
+    btns[0].disabled=rail.scrollLeft<=2;
+    btns[1].disabled=rail.scrollLeft>=max-2;
+  });
+}
+rails.forEach(({rail,btns})=>{
+  rail.addEventListener('scroll',updateRails,{passive:true});
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    rail.scrollBy({left:b.dataset.dir*Math.max(rail.clientWidth*.8,220),behavior:reduce?'auto':'smooth'});
+  }));
+});
+addEventListener('resize',updateRails);
+
+// ---- AI videos: play only while on screen (muted, looping) ----
+const vids=[...document.querySelectorAll('.wcard video')];
+if(reduce){
+  vids.forEach(v=>{v.controls=true;v.preload='metadata'});
+}else if('IntersectionObserver'in window){
+  const vio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){const p=e.target.play();if(p)p.catch(()=>{})}else e.target.pause();
+  }),{threshold:.35});
+  vids.forEach(v=>vio.observe(v));
+}
+
+showTab(location.hash==='#work'?'work':'about',false);
 if(!reduce&&'IntersectionObserver'in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
