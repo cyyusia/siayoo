@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chaeyeon Yoo — Brand &amp; Market Strategist</title>
-<meta name="description" content="Chaeyeon Yoo (Sia) — Brand &amp; Market Strategist based in Mexico City and Seoul. Go-To-Market Strategy, Content Marketing, Localization, Social Media Management, Influencer Collaboration, Off-line Events.">
-<meta property="og:title" content="Chaeyeon Yoo — Brand &amp; Market Strategist">
-<meta property="og:type" content="website">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaeyeon Yoo — Brand Marketing Specialist</title>
+<meta name="description" content="Chaeyeon Yoo (Sia) — Brand Marketing Specialist based in Mexico City and Seoul. Strategy × Branding × Content × Global Marketing.">
+<meta property="og:title" content="Chaeyeon Yoo — Brand Marketing Specialist">
+<meta property="og:description" content="Mexico City / Seoul · Strategy × Branding × Content × Global Marketing">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="en_US">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@200;300;400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Apple-style light palette: light-gray page, white "point" surfaces,
-     black text. The accent that used to be cobalt blue is now black. */
-  --bg:#F5F5F7;             /* page background (Apple's light gray)   */
-  --paper:#FFFFFF;          /* white accent / elevated surfaces        */
-  --ink:#1D1D1F;            /* primary text (Apple's near-black)       */
-  --blue:#1D1D1F;           /* accent — was cobalt, now the same black */
-  --blue-soft:#6E6E73;      /* secondary accent — a muted gray so it
-                                 still reads as a step down from --blue */
-  --dim:#6E6E73;            /* secondary text                          */
-  --faint:#86868B;          /* tertiary text                           */
-  --hair:#D2D2D7;           /* hairline dividers                       */
-  /* Avenir Next and Apple SD Gothic Neo are Apple system faces — they can't be
-     served as webfonts, so both carry a fallback chain and Inter is kept
-     loaded as the stand-in on Windows/Android. */
-  --font-display:"Avenir Next","Avenir","Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --font-body:"Apple SD Gothic Neo","Pretendard","Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --gutter:clamp(18px,3vw,44px);
-  --max:1560px;
+  --bg:#FFFFFF;
+  --ink:#111111;
+  --gray:#6E6E6E;
+  --faint:#9B9B9B;
+  --hair:#E4E4E4;
+  --gutter:clamp(20px,5vw,72px);
+  --max:1180px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -40,621 +29,490 @@ html{scroll-behavior:smooth}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 body{
-  font-family:var(--font-body);
-  background:var(--bg);color:var(--ink);
-  font-weight:400;line-height:1.6;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:15px;line-height:1.7;font-weight:400;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
+::selection{background:var(--ink);color:#fff}
 a{color:inherit}
-img{max-width:100%;display:block}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{display:block;max-width:100%}
 
-/* display face: headings, section markers and other short label type */
-h1,h2,h3,
-.sec-num,.sec-label,.sec-title,
-.hero-meta,.hc-zone,.hc-time,.hero-sub b,
-.explore,.marquee-track,
-.cap-num,.cap-name,
-.wrow-name,.wshot-soon,
-.drow-key,.drow-title,
-.contact-title,.clink,
-.foot-inner{
-  font-family:var(--font-display);
+.skip-link{
+  position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;
+  padding:10px 18px;z-index:200;font-weight:500;
+}
+.skip-link:focus{left:0}
+
+.mono{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;
+  color:var(--gray);
 }
 
+/* ---------- header ---------- */
+header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px var(--gutter);
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s;
+}
+header.scrolled{border-bottom-color:var(--hair)}
+.wordmark{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;font-weight:500;text-decoration:none;
+}
+.nav{display:flex;gap:clamp(12px,2.2vw,26px);align-items:center}
+.nav a{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;text-decoration:none;color:var(--gray);
+  transition:color .2s;
+}
+.nav a:hover{color:var(--ink)}
+
+/* ---------- layout ---------- */
 .wrap{max-width:var(--max);margin:0 auto}
+section{padding:clamp(58px,8vw,104px) var(--gutter)}
 
-/* ---------- hero ---------- */
-.hero{
-  position:relative;
-  padding:clamp(40px,7vw,90px) var(--gutter) clamp(40px,6vw,80px);
-  min-height:min(100svh,900px);
-  display:flex;flex-direction:column;justify-content:space-between;
-  overflow:hidden;
+.section-head{
+  display:flex;align-items:baseline;gap:14px;
+  padding-bottom:12px;margin-bottom:clamp(26px,3.4vw,44px);
+  border-bottom:1px solid var(--ink);
 }
-.hero > *{position:relative;z-index:1}
-
-.hero-meta{
-  max-width:var(--max);margin:0 auto;width:100%;
-  display:flex;justify-content:space-between;gap:16px;
-  font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--dim);
+.section-head h2{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;
 }
-.hero-mid{max-width:var(--max);margin:0 auto;width:100%;padding:clamp(30px,5vw,60px) 0}
-.hero-title{
-  font-size:clamp(40px,8.4vw,116px);font-weight:700;
-  letter-spacing:-.035em;line-height:1.02;
-}
-.hero-title .dot{color:var(--blue)}
-.hero-title .l2{display:block}
-.hero-title .wave{
-  display:inline-block;
-  font-size:.72em;
-  transform-origin:70% 70%;
-  animation:wave 2.6s ease-in-out infinite;
-  animation-delay:.6s;
-}
-@media (prefers-reduced-motion:reduce){
-  .hero-title .wave{animation:none}
-}
-@keyframes wave{
-  0%,60%,100%{transform:rotate(0deg)}
-  10%{transform:rotate(16deg)}
-  20%{transform:rotate(-8deg)}
-  30%{transform:rotate(16deg)}
-  40%{transform:rotate(-4deg)}
-  50%{transform:rotate(10deg)}
+.section-head .count{
+  margin-left:auto;font-family:"IBM Plex Mono",monospace;
+  font-size:10px;letter-spacing:.16em;color:var(--faint);
 }
 
-/* the clocks sit under the headline as a supporting line */
-.hero-clock{
-  margin-top:clamp(18px,2.4vw,32px);
-  display:flex;align-items:baseline;gap:clamp(12px,1.8vw,26px);flex-wrap:wrap;
-}
-.hc-unit{display:flex;align-items:baseline;gap:9px}
-.hc-zone{
-  font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--blue-soft);
-}
-.hc-time{
-  font-size:clamp(20px,2.6vw,32px);font-weight:700;letter-spacing:-.02em;
-  font-variant-numeric:tabular-nums;line-height:1;
-}
-.hc-x{font-size:clamp(14px,1.6vw,20px);font-weight:300;color:var(--faint)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 
-.hero-foot{
-  max-width:var(--max);margin:0 auto;width:100%;
-  display:flex;align-items:flex-end;justify-content:space-between;gap:26px;flex-wrap:wrap;
+/* ---------- intro ---------- */
+.intro{
+  padding-top:clamp(92px,11vw,132px);
+  padding-bottom:clamp(48px,6vw,88px);
 }
-.hero-sub{font-size:clamp(14px,1.5vw,18px);font-weight:300;line-height:1.75;color:var(--dim);max-width:56ch}
-.hero-sub b{font-weight:500;color:var(--ink)}
-.explore{
-  flex:none;width:clamp(96px,10vw,132px);aspect-ratio:1;border-radius:50%;
-  background:var(--paper);
-  border:1px solid var(--hair);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-  font-size:10px;font-weight:600;letter-spacing:.16em;color:var(--dim);
-  text-decoration:none;transition:border-color .2s,color .2s,box-shadow .2s;
-  box-shadow:0 1px 3px rgba(0,0,0,.08);
-}
-.explore:hover{border-color:var(--blue);color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.1)}
-.explore span{font-size:16px}
+.intro-grid{max-width:820px}
 
-/* ---------- marquee ---------- */
-.marquee{
-  background:var(--blue);color:#fff;overflow:hidden;
-  border-top:1px solid rgba(0,0,0,.2);border-bottom:1px solid rgba(0,0,0,.2);
+.profile{padding-top:4px}
+.profile .eyebrow{margin-bottom:16px}
+.name{
+  display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:"Poppins","Inter",sans-serif;
+  font-weight:200;font-size:clamp(34px,5.4vw,62px);
+  letter-spacing:-.03em;line-height:1.1;
 }
-.marquee-track{
-  display:flex;width:max-content;
-  animation:slide 34s linear infinite;
+.name .aka{
+  font-family:"IBM Plex Mono",monospace;font-weight:400;
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);
+  white-space:nowrap;
 }
-.marquee-track span{
-  display:flex;align-items:center;gap:clamp(18px,3vw,42px);
-  padding:14px clamp(9px,1.5vw,21px);
-  font-size:clamp(12px,1.5vw,19px);font-weight:600;letter-spacing:-.01em;white-space:nowrap;
+.role{
+  margin-top:clamp(20px,2.6vw,28px);
+  padding-top:clamp(18px,2.2vw,24px);
+  border-top:1px solid var(--ink);
 }
-.marquee-track i{font-style:normal;opacity:.7;font-size:.7em}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
-
-/* ---------- section shell ---------- */
-.sec{
-  border-bottom:1px solid var(--hair);
-  padding:clamp(56px,8vw,120px) var(--gutter);
+.role-title{
+  font-family:"Poppins","Inter",sans-serif;
+  font-weight:300;font-size:clamp(19px,2.3vw,28px);letter-spacing:-.015em;line-height:1.3;
 }
-.sec-inner{
-  max-width:var(--max);margin:0 auto;
-  display:grid;grid-template-columns:minmax(150px,.2fr) minmax(0,1fr);
-  gap:clamp(26px,4vw,70px);align-items:start;
+.role-pillars{
+  margin-top:12px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);
+  line-height:1.9;
 }
-.sec-index{position:sticky;top:96px}
-.sec-num{display:block;font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--blue)}
-.sec-label{
-  display:block;margin-top:clamp(30px,4vw,56px);
-  font-size:12px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
-}
-@media (max-width:820px){
-  .sec-inner{grid-template-columns:1fr;gap:24px}
-  .sec-index{position:static;display:flex;align-items:baseline;gap:18px}
-  .sec-label{margin-top:0}
+.role-line{
+  margin-top:10px;
+  font-size:14.5px;font-weight:300;line-height:1.7;color:var(--gray);
+  max-width:56ch;
 }
 
-.sec-title{
-  font-size:clamp(26px,4.4vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1.14;
-}
-.sec-title .hl{color:var(--blue)}
-
-/* ---------- who i am ---------- */
-.who-body{
-  margin-top:0;
-  font-size:clamp(14px,1.35vw,17px);font-weight:300;line-height:1.85;color:var(--dim);
-  max-width:72ch;
-}
-.who-rule{margin-top:clamp(34px,5vw,72px);border-top:1px solid var(--hair)}
-.who-lead{font-size:clamp(15px,1.5vw,19px);color:var(--ink)}
-.who-note{
-  margin-top:clamp(22px,3vw,38px);
-  font-size:clamp(14px,1.3vw,16px);font-weight:400;line-height:1.8;color:var(--ink);
-  max-width:60ch;
-}
-
-/* ---------- capabilities ---------- */
-.caps{
-  margin-top:clamp(34px,4.6vw,64px);
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  border:1px solid var(--hair);
-}
-.cap{
-  padding:clamp(24px,2.8vw,40px);
-  background:var(--paper);
-  border-left:1px solid var(--hair);
-  min-height:clamp(280px,30vw,380px);
-  display:flex;flex-direction:column;
-  transition:background .3s,color .3s;
-}
-.cap:first-child{border-left:none}
-.cap:hover,.cap:focus-within{background:var(--blue)}
-.cap-num{font-size:11px;font-weight:500;letter-spacing:.16em;color:var(--faint);transition:color .3s}
-.cap:hover .cap-num{color:rgba(255,255,255,.8)}
-.cap-name{
-  margin-top:auto;
-  font-size:clamp(22px,2.6vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.1;
-  transition:color .3s;
-}
-.cap:hover .cap-name{color:#fff}
-.cap-list{list-style:none;margin-top:clamp(18px,2.2vw,26px);padding:0}
-.cap-list li{
+dl.spec{margin-top:clamp(20px,2.6vw,28px)}
+dl.spec > div{
+  display:grid;grid-template-columns:minmax(76px,.24fr) minmax(0,1fr);
+  gap:6px 18px;
   padding:11px 0;border-top:1px solid var(--hair);
-  font-size:13.5px;font-weight:300;color:var(--dim);
-  transition:color .3s,border-color .3s;
 }
-.cap:hover .cap-list li{color:rgba(255,255,255,.92);border-color:rgba(255,255,255,.3)}
-@media (max-width:820px){
-  .caps{grid-template-columns:1fr}
-  .cap{border-left:none;border-top:1px solid var(--hair);min-height:0}
-  .cap:first-child{border-top:none}
-  .cap-name{margin-top:16px}
+dl.spec > div:last-child{border-bottom:1px solid var(--hair)}
+dl.spec dt{
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);padding-top:3px;
+}
+dl.spec dd{font-size:13.5px;line-height:1.85;color:var(--ink)}
+dl.spec dd .nw{white-space:nowrap}
+dl.spec dd .sep{color:var(--hair);margin:0 7px}
+dl.spec dd b{font-weight:500}
+@media (max-width:400px){dl.spec dd .nw{white-space:normal}}
+
+.intro-contact{
+  margin-top:clamp(20px,2.6vw,28px);
+  display:flex;gap:20px;flex-wrap:wrap;align-items:center;
+}
+.intro-contact a{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;
+  padding-bottom:3px;border-bottom:1px solid var(--ink);
+  transition:opacity .2s;
+}
+.intro-contact a:hover{opacity:.5}
+
+/* ---------- about ---------- */
+.about-body{max-width:66ch}
+.about-body p{
+  font-size:14.5px;line-height:1.95;color:var(--ink);font-weight:300;
+  text-wrap:pretty;
+  hyphens:none;-webkit-hyphens:none;
+  overflow-wrap:normal;word-break:normal;
+}
+@supports (text-wrap:pretty){.about-body p{text-wrap:pretty}}
+.about-body p + p{margin-top:16px}
+.about-body p:last-child{
+  margin-top:22px;padding-top:16px;border-top:1px solid var(--hair);
+  color:var(--gray);
 }
 
-/* ---------- experience ---------- */
-.dlist{list-style:none;margin:clamp(30px,4vw,52px) 0 0;padding:0}
-.drow{
-  display:grid;grid-template-columns:minmax(140px,.24fr) minmax(0,1fr);
-  gap:8px clamp(20px,3vw,48px);
-  padding:clamp(22px,2.6vw,32px) 0;
+/* ---------- entry (experience / education) ---------- */
+.entry{
+  display:grid;grid-template-columns:minmax(190px,.34fr) minmax(0,1fr);
+  gap:14px clamp(24px,4vw,60px);
+  padding:clamp(22px,2.8vw,34px) 0;
   border-top:1px solid var(--hair);
 }
-.dlist > .drow:first-child{border-top:none;padding-top:0}
-.drow-key{display:block;font-size:12.5px;color:var(--dim);font-variant-numeric:tabular-nums}
-.drow-sub{display:block;margin-top:4px;font-size:12px;color:var(--faint)}
-.drow-title{font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.4}
-.drow-role{margin-top:3px;font-size:13px;font-weight:300;color:var(--blue-soft)}
-.drow-text{margin-top:12px;font-size:13.5px;line-height:1.8;font-weight:300;color:var(--dim);max-width:70ch}
-.drow-plain{font-size:14px;line-height:1.85}
-.drow-plain + .drow-plain{margin-top:4px}
-.drow-plain b{font-weight:500}
-.drow-plain .sep{color:var(--faint);margin:0 8px}
-@media (max-width:700px){.drow{grid-template-columns:1fr;gap:6px}}
+.entry:first-of-type{border-top:none;padding-top:0}
+.entry-meta > *{display:block}
+.entry-period{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  color:var(--ink);
+}
+.entry-place{
+  margin-top:4px;
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);
+}
+.entry-position{
+  margin-top:12px;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gray);
+}
+.entry-org{
+  margin-top:5px;
+  font-family:inherit;
+  font-weight:600;font-size:14px;
+  letter-spacing:0;line-height:1.5;color:var(--ink);
+}
+.entry-body ul{list-style:none}
+.entry-body li{
+  position:relative;padding-left:15px;
+  font-size:13.5px;line-height:1.8;font-weight:300;color:var(--ink);
+  max-width:64ch;
+}
+.entry-body li + li{margin-top:7px}
+.entry-body li::before{
+  content:"";position:absolute;left:0;top:.78em;
+  width:5px;height:1px;background:var(--faint);
+}
+.entry-keys{
+  margin-top:14px;font-family:"IBM Plex Mono",monospace;
+  font-size:10px;letter-spacing:.06em;color:var(--faint);line-height:2;
+}
+.entry-keys span{margin-right:12px;white-space:nowrap;display:inline-block}
 
-/* ---------- work: a company per row, three shots beside the name ---------- */
-.worklist{display:flex;flex-direction:column}
-.wrow{
-  display:grid;grid-template-columns:minmax(160px,.26fr) minmax(0,1fr);
-  gap:clamp(18px,2.6vw,48px);align-items:start;
-  padding:clamp(26px,3.2vw,42px) 0;
-  border-top:1px solid var(--hair);
-}
-.worklist > .wrow:first-child{border-top:none;padding-top:0}
-
-.wrow-name{
-  font-size:clamp(16px,1.8vw,22px);font-weight:700;letter-spacing:-.01em;line-height:1.35;
-}
-.wrow-desc{
-  list-style:none;margin-top:9px;padding:0;
-  max-width:32ch;
-}
-.wrow-desc li{
-  font-size:12.5px;font-weight:300;line-height:1.65;color:var(--dim);
-}
-.wrow-desc li + li{margin-top:2px}
-
-.wshots{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(10px,1.2vw,16px);
-}
-.wshot{
-  display:flex;align-items:center;justify-content:center;
-  aspect-ratio:3/4;
-  background:var(--paper);
-  border:1px solid var(--hair);
-  transition:border-color .25s,background .25s;
-}
-.wshot:hover{border-color:var(--blue);background:#F0F0F2}
-.wshot-soon{
-  font-size:11px;font-weight:400;letter-spacing:.2em;color:var(--faint);
-  text-align:center;
-}
-.wshot img{width:100%;height:100%;object-fit:cover;display:block}
-
-@media (max-width:700px){
-  .wrow{grid-template-columns:1fr;gap:16px}
-}
-@media (max-width:520px){
-  /* three thumbs across a phone leaves each box narrower than the label */
-  .wshots{gap:8px}
-  .wshot-soon{font-size:8.5px;letter-spacing:.1em}
-}
-
-/* ---------- contact ---------- */
-.contact{padding:clamp(56px,8vw,110px) var(--gutter)}
-.contact-inner{max-width:var(--max);margin:0 auto}
-.contact-title{font-size:clamp(28px,5vw,68px);font-weight:700;letter-spacing:-.03em;line-height:1.08}
-.contact-title .hl{color:var(--blue)}
-.contact-links{
-  margin-top:clamp(28px,3.6vw,48px);
-  display:flex;gap:clamp(18px,2.4vw,32px);flex-wrap:wrap;
-}
-.clink{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:0 0 5px;border-bottom:1px solid var(--ink);
-  font-size:15px;font-weight:500;text-decoration:none;
-  transition:color .2s,border-color .2s,gap .2s;
-}
-.clink:hover{color:var(--blue-soft);border-color:var(--blue);gap:14px}
-
-.foot{
-  border-top:1px solid var(--hair);
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--ink);
   padding:22px var(--gutter);
 }
-.foot-inner{
+.footer-inner{
   max-width:var(--max);margin:0 auto;
-  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
-  font-size:11.5px;letter-spacing:.06em;color:var(--faint);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.footer-links{display:flex;gap:clamp(16px,3vw,32px);flex-wrap:wrap}
+.footer-links a{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;text-decoration:none;font-weight:500;
+  padding-bottom:3px;border-bottom:1px solid var(--hair);
+  transition:border-color .2s;
+}
+.footer-links a:hover{border-bottom-color:var(--ink)}
+.footer-meta{
+  display:flex;gap:clamp(14px,2.4vw,26px);flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);
 }
 
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .entry{grid-template-columns:1fr;gap:12px}
+}
+@media (max-width:520px){
+  .nav{display:none}
+  .wordmark{white-space:nowrap}
+  dl.spec > div{grid-template-columns:1fr}
+  dl.spec dt{padding-top:0}
+}
+
+/* ---------- print ---------- */
 @media print{
-  body{background:#fff;color:#000}
-  .marquee,.explore{display:none}
-  .hero{min-height:0;padding-top:0}
-  .sec,.foot{border-color:#ddd}
-  .drow-text,.drow-key,.who-body{color:#333}
-  .wrow{break-inside:avoid}
+  header,.skip-link{display:none}
+  body{font-size:10pt}
+  section{padding:12pt 0;break-inside:avoid}
+  .intro{padding-top:0}
+  .entry{break-inside:avoid}
+  .reveal{opacity:1!important;transform:none!important}
 }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<main>
+<header id="header">
+  <a class="wordmark" href="#top">Chaeyeon Yoo</a>
+  <nav class="nav">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="top">
-  <div class="hero-meta">
-    <span>Marketing Strategist</span>
-    <span>Mexico City ⇄ Seoul</span>
-  </div>
+<main id="main">
 
-  <div class="hero-mid">
-    <h1 class="hero-title">
-      HI <span class="wave" role="img" aria-label="waving hand">👋</span><br>
-      <span class="l2">I'm Sia<span class="dot">.</span></span>
-    </h1>
+<!-- ===== INTRO ===== -->
+<section class="intro" id="top" aria-label="Profile">
+  <div class="wrap intro-grid">
 
-    <p class="hero-clock" aria-label="Current local time">
-      <span class="hc-unit">
-        <span class="hc-zone">KST</span>
-        <span class="hc-time" id="kst-clock">--:--:--</span>
-      </span>
-      <span class="hc-x" aria-hidden="true">×</span>
-      <span class="hc-unit">
-        <span class="hc-zone">CST</span>
-        <span class="hc-time" id="cst-clock">--:--:--</span>
-      </span>
-    </p>
-  </div>
 
-  <div class="hero-foot">
-    <p class="hero-sub">
-      <b>Brand Marketing Specialist</b><br>
-      Strategy × Branding × Content × Global Marketing<br>
-      Turning Brand Identity into Strategy, Contents into Brand Value.
-    </p>
-    <a class="explore" href="#about">EXPLORE <span aria-hidden="true">↓</span></a>
-  </div>
-</section>
+    <div class="profile reveal">
+      <p class="mono eyebrow">Curriculum Vitae — 2026</p>
 
-<!-- ===== MARQUEE ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>CONTENT <i>✦</i> BRANDING <i>✦</i> DIGITAL MARKETING <i>✦</i> SOCIAL MEDIA <i>✦</i> OFF LINE MARKETING <i>✦</i> GLOBAL MARKETING <i>✦</i></span>
-    <span>CONTENT <i>✦</i> BRANDING <i>✦</i> DIGITAL MARKETING <i>✦</i> SOCIAL MEDIA <i>✦</i> OFF LINE MARKETING <i>✦</i> GLOBAL MARKETING <i>✦</i></span>
-  </div>
-</div>
+      <h1 class="name">
+        <span>Chaeyeon Yoo</span>
+        <span class="aka">aka Sia</span>
+      </h1>
 
-<!-- ===== 01 WHO I AM ===== -->
-<section class="sec" id="about">
-  <div class="sec-inner">
-    <div class="sec-index">
-      <span class="sec-num">01</span>
-      <span class="sec-label">Who I Am</span>
-    </div>
-    <div>
-      <p class="who-body who-lead">As a Brand &amp; Marketing Strategist, I work as a navigator for brands entering new markets, charting the route from first launch to lasting presence. Through localization, content, and community driven marketing, I build strategies that connect brands with people across cultures.</p>
-
-      <div class="who-rule"></div>
-      <p class="who-note">I value creative freedom, but I care just as much about delivering results.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 02 CAPABILITIES ===== -->
-<section class="sec" id="capabilities">
-  <div class="sec-inner">
-    <div class="sec-index">
-      <span class="sec-num">02</span>
-      <span class="sec-label">Capabilities</span>
-    </div>
-    <div>
-      <h2 class="sec-title">From finding the opening,<br><span class="hl">to making it sell.</span></h2>
-
-      <div class="caps">
-        <div class="cap">
-          <span class="cap-num">01</span>
-          <h3 class="cap-name">DISCOVER</h3>
-          <ul class="cap-list">
-            <li>Market Research</li>
-            <li>Customer Research</li>
-            <li>Go-To-Market Strategy</li>
-          </ul>
-        </div>
-        <div class="cap">
-          <span class="cap-num">02</span>
-          <h3 class="cap-name">BUILD</h3>
-          <ul class="cap-list">
-            <li>Branding</li>
-            <li>Design</li>
-            <li>Content</li>
-          </ul>
-        </div>
-        <div class="cap">
-          <span class="cap-num">03</span>
-          <h3 class="cap-name">MARKETING</h3>
-          <ul class="cap-list">
-            <li>Social Media</li>
-            <li>Influencer</li>
-            <li>Off-line Marketing</li>
-          </ul>
-        </div>
+      <div class="role">
+        <p class="role-title">Brand Marketing Specialist</p>
+        <p class="role-pillars">Strategy × Branding × Content × Global Marketing</p>
+        <p class="role-line">Turning Brand Identity into Strategy, Contents into Brand Value.</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== 05 SELECTED WORK ===== -->
-<section class="sec" id="work">
-  <div class="sec-inner">
-    <div class="sec-index">
-      <span class="sec-num">03</span>
-      <span class="sec-label">Selected Work</span>
-    </div>
-    <div class="worklist">
-      <div class="wrow">
+      <dl class="spec">
         <div>
-          <h3 class="wrow-name">Vatech</h3>
-          <ul class="wrow-desc">
-            <li>Brand Marketing</li>
-            <li>Social Media</li>
-            <li>Offline Events</li>
-            <li>CRM Operations</li>
-          </ul>
+          <dt>Base</dt>
+          <dd>Mexico City <span class="sep">/</span> Seoul</dd>
         </div>
-        <div class="wshots">
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-        </div>
-      </div>
-      <div class="wrow">
         <div>
-          <h3 class="wrow-name">Blueboat</h3>
-          <ul class="wrow-desc">
-            <li>GTM Strategy</li>
-            <li>Brand Marketing</li>
-            <li>Social Media</li>
-            <li>B2B Sales</li>
-          </ul>
+          <dt>Skills</dt>
+          <dd><span class="nw">Go-To-Market Strategy</span> <span class="sep">·</span> <span class="nw">Content Localization</span> <span class="sep">·</span> <span class="nw">Influencer Collaboration</span> <span class="sep">·</span> <span class="nw">Off-line Events</span></dd>
         </div>
-        <div class="wshots">
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-        </div>
-      </div>
-      <div class="wrow">
         <div>
-          <h3 class="wrow-name">Seoulland</h3>
-          <ul class="wrow-desc">
-            <li>Brand Marketing</li>
-            <li>New Business Planning</li>
-            <li>App Service Planning</li>
-            <li>Social Media</li>
-            <li>Offline Events</li>
-          </ul>
+          <dt>Language</dt>
+          <dd><span class="nw">Korean <b>Native</b></span> <span class="sep">·</span> <span class="nw">English <b>Business</b></span> <span class="sep">·</span> <span class="nw">Spanish <b>Business</b></span></dd>
         </div>
-        <div class="wshots">
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-        </div>
+      </dl>
+
+      <div class="intro-contact">
+        <a href="mailto:cyyu.sia@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/chaeyeon-yoo-33098a247/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <div class="wrow">
-        <div>
-          <h3 class="wrow-name">Hervibe</h3>
-          <ul class="wrow-desc">
-            <li>Social Media Content Production</li>
-          </ul>
-        </div>
-        <div class="wshots">
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-          <span class="wshot"><span class="wshot-soon">UPLOAD SOON</span></span>
-        </div>
-      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="about-title">About</h2>
+    </div>
+    <div class="about-body reveal">
+      <p>My career has focused on connecting Korean businesses with global markets, particularly Mexico and Latin America. With a deep understanding of local markets and cultural nuances, I help brands adapt to new audiences by developing localized strategies and building meaningful connections with local communities.</p>
+      <p>I have collaborated with global teams across Korea, the United States, Mexico, and Latin America, leading marketing initiatives and cross-functional projects in the beauty, healthcare, and entertainment industries. My experience spans multiple stages of business growth from market entry and brand communications to campaign execution and market expansion, developing and implementing strategies tailored to each phase.</p>
+      <p>In addition&nbsp;- I have managed social media channels with over 45k followers across Latin America, partnered with local brands, and helped grow the presence of multiple creators. I specialize in planning and producing content that resonates with target audiences, creating communication strategies that connect brands with people across cultures.</p>
+      <p>I value creative freedom, but I care just as much about delivering results.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== 04 BACKGROUND ===== -->
-<section class="sec" id="background">
-  <div class="sec-inner">
-    <div class="sec-index">
-      <span class="sec-num">04</span>
-      <span class="sec-label">Background</span>
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" aria-labelledby="exp-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="exp-title">Experience</h2>
+      <span class="count">05</span>
     </div>
-    <div>
-      <ul class="dlist">
-        <li class="drow">
-          <div><span class="drow-key">Base</span></div>
-          <div><p class="drow-plain">Mexico City <span class="sep">/</span> Seoul</p></div>
-        </li>
-        <li class="drow">
-          <div><span class="drow-key">Education</span></div>
-          <div>
-            <p class="drow-plain">B.A, Industrial Design, Hanyang University</p>
-            <p class="drow-plain">M.Des, Design Management, Hongik University IDAS</p>
-          </div>
-        </li>
-        <li class="drow">
-          <div><span class="drow-key">Language</span></div>
-          <div><p class="drow-plain">Korean <b>Native</b> <span class="sep">·</span> English <b>Business</b> <span class="sep">·</span> Spanish <b>Business</b></p></div>
-        </li>
-      </ul>
-    </div>
+
+    <article class="entry reveal">
+      <div class="entry-meta">
+        <span class="entry-period">Feb 2026 — Present</span>
+        <span class="entry-place">Mexico City, Mexico · Hybrid</span>
+        <span class="entry-position">Brand Marketing Lead</span>
+        <span class="entry-org">Millimeter Company, S.A. de C.V.</span>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Planned and executed market entry strategies for Korean beauty brands in Mexico.</li>
+          <li>Identified influencers aligned with each brand and managed collaboration campaigns.</li>
+          <li>Managed owned media channels and localized brand identity.</li>
+          <li>Planned marketing strategies across channels and funnel stages, contributing to revenue growth.</li>
+          <li>Identified sales channels and generated customer leads.</li>
+        </ul>
+        <p class="entry-keys"><span>#Market_Entry</span><span>#Influencer_Marketing</span><span>#Owned_Media</span><span>#Localization</span><span>#Lead_Generation</span></p>
+      </div>
+    </article>
+
+    <article class="entry reveal">
+      <div class="entry-meta">
+        <span class="entry-period">Aug 2025 — Present</span>
+        <span class="entry-place">Mexico City, Mexico · On-site</span>
+        <span class="entry-position">Marketing Director</span>
+        <span class="entry-org">Vatech México | Latinoamérica</span>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Led the localization of products, software, owned media (Meta, YouTube, LinkedIn), messaging, and marketing materials.</li>
+          <li>Served as a bridge between HQ and Latin American teams, adapting global strategies to local market conditions.</li>
+          <li>Built CRM marketing across the customer lifecycle — from lead nurturing to customer retention — in collaboration with HQ and sales teams.</li>
+          <li>Planned and managed exhibitions, booth design, and on-site operations.</li>
+          <li>Executed influencer collaboration campaigns to increase brand awareness.</li>
+        </ul>
+        <p class="entry-keys"><span>#Localization</span><span>#CRM_Marketing</span><span>#Exhibition</span><span>#HQ_Communication</span><span>#Influencer_Collaboration</span></p>
+      </div>
+    </article>
+
+    <article class="entry reveal">
+      <div class="entry-meta">
+        <span class="entry-period">Jun 2025 — Apr 2026</span>
+        <span class="entry-place">United States · Remote</span>
+        <span class="entry-position">Project Manager</span>
+        <span class="entry-org">Skoop Marketing / Kollab LA</span>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Identified and outreached Korean brands entering the U.S. market.</li>
+          <li>Supported communication between brands and agency partners.</li>
+          <li>Planned offline brand events and content campaigns for local consumers.</li>
+          <li>Led newsletters and content marketing for Korean client acquisition, achieving an average email open rate of over 60% through performance tracking and audience optimization (industry average: 20%).</li>
+        </ul>
+        <p class="entry-keys"><span>#Brand_Outreach</span><span>#Offline_Event</span><span>#Content_Campaign</span><span>#Newsletter</span><span>#Email_Marketing</span></p>
+      </div>
+    </article>
+
+    <article class="entry reveal">
+      <div class="entry-meta">
+        <span class="entry-period">Oct 2023 — Dec 2024</span>
+        <span class="entry-place">Seoul, Korea · On-site</span>
+        <span class="entry-position">Product Manager</span>
+        <span class="entry-org">Seoulland Co., Ltd.</span>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Translated user research into actionable insights to define project direction.</li>
+          <li>Planned new features and marketing strategies to increase DAU and brand awareness.</li>
+          <li>Managed on-site marketing operations for the World DJ Festival (WDF).</li>
+          <li>Coordinated with design and development agencies to manage project timelines and quality.</li>
+        </ul>
+        <p class="entry-keys"><span>#User_Research</span><span>#Product_Planning</span><span>#Festival_Operation</span><span>#Agency_Management</span></p>
+      </div>
+    </article>
+
+    <article class="entry reveal">
+      <div class="entry-meta">
+        <span class="entry-period">Apr 2023 — Sep 2023</span>
+        <span class="entry-place">Seoul, Korea · Hybrid</span>
+        <span class="entry-position">Content Marketer</span>
+        <span class="entry-org">CUZ Art Group</span>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Planned a website renewal and social media rebranding for brand repositioning.</li>
+          <li>Produced blog and social media content based on trending keywords.</li>
+          <li>Produced marketing assets for Hyundai Department Store's Dear Earth exhibition (ambassador program and merchandise) and supported on-site operations and Korean–English interpretation.</li>
+        </ul>
+        <p class="entry-keys"><span>#Brand_Repositioning</span><span>#Content_Production</span><span>#Exhibition</span><span>#Interpretation</span></p>
+      </div>
+    </article>
+
   </div>
 </section>
 
-<!-- ===== 03 EXPERIENCE ===== -->
-<section class="sec" id="experience">
-  <div class="sec-inner">
-    <div class="sec-index">
-      <span class="sec-num">05</span>
-      <span class="sec-label">Experience</span>
+<!-- ===== EDUCATION ===== -->
+<section id="education" aria-labelledby="edu-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="edu-title">Education</h2>
+      <span class="count">02</span>
     </div>
-    <div>
-      <ul class="dlist">
-        <li class="drow">
-          <div><span class="drow-key">Feb 2026 — Present</span><span class="drow-sub">Mexico City, Mexico</span></div>
-          <div>
-            <h3 class="drow-title">Millimeter Company, S.A. de C.V.</h3>
-            <p class="drow-role">Brand Marketing Lead</p>
-            <p class="drow-text">Led go-to-market strategy for Korean beauty brands entering Mexico, managing owned media, influencer seeding campaigns, and paid advertising to grow brand awareness across TikTok &amp; Meta.</p>
-          </div>
-        </li>
-        <li class="drow">
-          <div><span class="drow-key">Aug 2025 — Present</span><span class="drow-sub">Mexico City, Mexico</span></div>
-          <div>
-            <h3 class="drow-title">Vatech México | Latinoamérica</h3>
-            <p class="drow-role">Marketing Director</p>
-            <p class="drow-text">Localized brand communications in close coordination with HQ, ran online and offline marketing campaigns, and expanded customer touchpoints by introducing CRM systems.</p>
-          </div>
-        </li>
-        <li class="drow">
-          <div><span class="drow-key">Jun 2025 — Apr 2026</span><span class="drow-sub">United States · Remote</span></div>
-          <div>
-            <h3 class="drow-title">Skoop Marketing / Kollab LA</h3>
-            <p class="drow-role">Project Manager</p>
-            <p class="drow-text">Managed marketing projects connecting Korean brands with U.S. partners, running offline events, content campaigns, and newsletters to support client acquisition.</p>
-          </div>
-        </li>
-        <li class="drow">
-          <div><span class="drow-key">Oct 2023 — Dec 2024</span><span class="drow-sub">Seoul, Korea</span></div>
-          <div>
-            <h3 class="drow-title">Seoulland Co., Ltd.</h3>
-            <p class="drow-role">Product Manager</p>
-            <p class="drow-text">Shaped product and marketing strategy at Seoul Land, translating user research into features and campaigns that grew daily active users.</p>
-          </div>
-        </li>
-        <li class="drow">
-          <div><span class="drow-key">Apr — Sep 2023</span><span class="drow-sub">Seoul, Korea</span></div>
-          <div>
-            <h3 class="drow-title">CUZ Art Group</h3>
-            <p class="drow-role">Content Marketer</p>
-            <p class="drow-text">Led brand repositioning through website renewal and content strategy, producing campaign assets for a major department store's sustainability exhibition.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
 
-<!-- ===== CONTACT ===== -->
-<section class="contact">
-  <div class="contact-inner">
-    <h2 class="contact-title">Let's <span class="hl">Connect.</span></h2>
-    <div class="contact-links">
-      <a class="clink" href="mailto:cyyu.sia@gmail.com">Email <span aria-hidden="true">↗</span></a>
-      <a class="clink" href="https://www.linkedin.com/in/chaeyeon-yoo-33098a247/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
-    </div>
+    <article class="entry reveal">
+      <div class="entry-meta">
+        <span class="entry-period">M.Des</span>
+        <span class="entry-place">Seoul, Korea</span>
+        <span class="entry-position">Design Management</span>
+        <span class="entry-org">Hongik University</span>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Research on hydrogen fuel-based mobility and hub design proposal — Hyundai Motors.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry reveal">
+      <div class="entry-meta">
+        <span class="entry-period">B.A</span>
+        <span class="entry-place">Seoul, Korea</span>
+        <span class="entry-position">Industrial Design</span>
+        <span class="entry-org">Hanyang University</span>
+      </div>
+      <div class="entry-body"></div>
+    </article>
+
   </div>
 </section>
 
 </main>
 
-<footer class="foot">
-  <div class="foot-inner">
-    <span>© 2026 Chaeyeon Yoo (Sia)</span>
-    <span>Mexico City ⇄ Seoul</span>
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="mailto:cyyu.sia@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/chaeyeon-yoo-33098a247/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 Chaeyeon Yoo</span>
+      <span>Mexico City ⇄ Seoul</span>
+    </div>
   </div>
 </footer>
 
 <script>
-// live clocks — Seoul (KST) and Mexico City (CST), ticking every second
-(function(){
-  const zones=[
-    {tz:'Asia/Seoul',          el:'kst-clock'},
-    {tz:'America/Mexico_City', el:'cst-clock'}
-  ];
-  const live=[];
-  zones.forEach(z=>{
-    const el=document.getElementById(z.el);
-    if(!el)return;
-    try{
-      const fmt=new Intl.DateTimeFormat('en-US',{
-        timeZone:z.tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false
-      });
-      fmt.format(new Date());          // throws here if the zone is unsupported
-      live.push({fmt,el});
-    }catch(e){ el.textContent=''; }
-  });
-  if(!live.length)return;
-
-  function tick(){
-    const now=new Date();
-    live.forEach(z=>z.el.textContent=z.fmt.format(now));
-    // re-sync to the next whole second rather than drifting on a fixed 1000ms
-    setTimeout(tick,1000-now.getMilliseconds()+20);
-  }
-  tick();
-})();
+const header=document.getElementById('header');
+if(header){
+  addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>10),{passive:true});
+}
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&'IntersectionObserver'in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  }),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
 </script>
 </body>
 </html>
