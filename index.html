@@ -289,7 +289,7 @@ section.wsec:last-child{padding-bottom:clamp(58px,8vw,104px)}
 
 .witem{
   flex:none;margin:0;scroll-snap-align:start;
-  width:min(calc(var(--card-h) * var(--ar)), calc(100vw - 2 * var(--gutter)));
+  width:calc(var(--card-h) * var(--ar));
 }
 .wcard{
   position:relative;display:block;width:100%;height:var(--card-h);
@@ -577,30 +577,32 @@ footer{
 <!-- ===== WORK (tab panel) ===== -->
 <div class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
 
-  <section class="wsec" aria-labelledby="w-maru">
+  <section class="wsec" aria-labelledby="w-ai">
     <div class="wsec-head">
-      <h2 class="wsec-name" id="w-maru">Maru Cafe</h2>
+      <h2 class="wsec-name" id="w-ai">AI Contents</h2>
       <div class="wsec-arrows" hidden>
-        <button class="warrow" type="button" data-dir="-1" aria-label="Scroll Maru Cafe left">←</button>
-        <button class="warrow" type="button" data-dir="1" aria-label="Scroll Maru Cafe right">→</button>
+        <button class="warrow" type="button" data-dir="-1" aria-label="Scroll AI Contents left">←</button>
+        <button class="warrow" type="button" data-dir="1" aria-label="Scroll AI Contents right">→</button>
       </div>
     </div>
-    <div class="wrail" tabindex="0" role="region" aria-label="Maru Cafe">
-        <figure class="witem" style="--ar:0.5618">
-          <div class="wcard"><video src="assets/work/maru-DesfutqjmfI.mp4" poster="assets/work/maru-DesfutqjmfI.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="Maru Cafe content by @marucafe.mx"></video></div>
-          <figcaption class="wcap">@marucafe.mx</figcaption>
+    <div class="wrail" tabindex="0" role="region" aria-label="AI Contents">
+        <figure class="witem" style="--ar:1.7778">
+          <div class="wcard"><video src="assets/work/ai-1.mp4" poster="assets/work/ai-1-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 1"></video></div>
         </figure>
-        <figure class="witem" style="--ar:0.8000">
-          <div class="wcard"><img src="assets/work/maru-Defnuc8HzRr.jpg" alt="Maru Cafe content by @marucafe.mx" width="880" height="1100" loading="lazy" decoding="async"></div>
-          <figcaption class="wcap">@marucafe.mx</figcaption>
+        <figure class="witem" style="--ar:1.0000">
+          <div class="wcard"><video src="assets/work/ai-2.mp4" poster="assets/work/ai-2-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 2"></video></div>
         </figure>
-        <figure class="witem" style="--ar:0.5627">
-          <div class="wcard"><img src="assets/work/maru-Ddx2FQ_uG2W.jpg" alt="Maru Cafe content by @cassia.ahn" width="619" height="1100" loading="lazy" decoding="async"></div>
-          <figcaption class="wcap">@cassia.ahn</figcaption>
+        <figure class="witem" style="--ar:0.5639">
+          <div class="wcard"><video src="assets/work/ai-3.mp4" poster="assets/work/ai-3-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 3"></video></div>
         </figure>
-        <figure class="witem" style="--ar:0.5618">
-          <div class="wcard"><video src="assets/work/maru-DeQJt9_v24z.mp4" poster="assets/work/maru-DeQJt9_v24z.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="Maru Cafe content by @eric.leines"></video></div>
-          <figcaption class="wcap">@eric.leines</figcaption>
+        <figure class="witem" style="--ar:0.5625">
+          <div class="wcard"><video src="assets/work/ai-5.mp4" poster="assets/work/ai-5-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 4"></video></div>
+        </figure>
+        <figure class="witem" style="--ar:1.7778">
+          <div class="wcard"><video src="assets/work/ai-6.mp4" poster="assets/work/ai-6-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 5"></video></div>
+        </figure>
+        <figure class="witem" style="--ar:0.6660">
+          <div class="wcard"><img src="assets/work/ai-4.jpg" alt="AI-generated beauty editorial image" width="999" height="1500" loading="lazy" decoding="async"></div>
         </figure>
     </div>
   </section>
@@ -662,6 +664,33 @@ footer{
         </figure>
     </div>
   </section>
+  <section class="wsec" aria-labelledby="w-maru">
+    <div class="wsec-head">
+      <h2 class="wsec-name" id="w-maru">Maru Cafe</h2>
+      <div class="wsec-arrows" hidden>
+        <button class="warrow" type="button" data-dir="-1" aria-label="Scroll Maru Cafe left">←</button>
+        <button class="warrow" type="button" data-dir="1" aria-label="Scroll Maru Cafe right">→</button>
+      </div>
+    </div>
+    <div class="wrail" tabindex="0" role="region" aria-label="Maru Cafe">
+        <figure class="witem" style="--ar:0.5618">
+          <div class="wcard"><video src="assets/work/maru-DesfutqjmfI.mp4" poster="assets/work/maru-DesfutqjmfI.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="Maru Cafe content by @marucafe.mx"></video></div>
+          <figcaption class="wcap">@marucafe.mx</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.8000">
+          <div class="wcard"><img src="assets/work/maru-Defnuc8HzRr.jpg" alt="Maru Cafe content by @marucafe.mx" width="880" height="1100" loading="lazy" decoding="async"></div>
+          <figcaption class="wcap">@marucafe.mx</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5627">
+          <div class="wcard"><img src="assets/work/maru-Ddx2FQ_uG2W.jpg" alt="Maru Cafe content by @cassia.ahn" width="619" height="1100" loading="lazy" decoding="async"></div>
+          <figcaption class="wcap">@cassia.ahn</figcaption>
+        </figure>
+        <figure class="witem" style="--ar:0.5618">
+          <div class="wcard"><video src="assets/work/maru-DeQJt9_v24z.mp4" poster="assets/work/maru-DeQJt9_v24z.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="Maru Cafe content by @eric.leines"></video></div>
+          <figcaption class="wcap">@eric.leines</figcaption>
+        </figure>
+    </div>
+  </section>
   <section class="wsec" aria-labelledby="w-personal">
     <div class="wsec-head">
       <h2 class="wsec-name" id="w-personal">Personal Contents</h2>
@@ -682,29 +711,6 @@ footer{
         <figure class="witem" style="--ar:0.5627">
           <div class="wcard"><video src="assets/work/personal-DZcBzxbtk23.mp4" poster="assets/work/personal-DZcBzxbtk23.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="Personal Contents content by @ludeseul.kr"></video></div>
           <figcaption class="wcap">@ludeseul.kr</figcaption>
-        </figure>
-    </div>
-  </section>
-  <section class="wsec" aria-labelledby="w-ai">
-    <div class="wsec-head">
-      <h2 class="wsec-name" id="w-ai">AI Contents</h2>
-      <div class="wsec-arrows" hidden>
-        <button class="warrow" type="button" data-dir="-1" aria-label="Scroll AI Contents left">←</button>
-        <button class="warrow" type="button" data-dir="1" aria-label="Scroll AI Contents right">→</button>
-      </div>
-    </div>
-    <div class="wrail" tabindex="0" role="region" aria-label="AI Contents">
-        <figure class="witem" style="--ar:1.7778">
-          <div class="wcard"><video src="assets/work/ai-1.mp4" poster="assets/work/ai-1-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 1"></video></div>
-        </figure>
-        <figure class="witem" style="--ar:1.0000">
-          <div class="wcard"><video src="assets/work/ai-2.mp4" poster="assets/work/ai-2-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 2"></video></div>
-        </figure>
-        <figure class="witem" style="--ar:0.5639">
-          <div class="wcard"><video src="assets/work/ai-3.mp4" poster="assets/work/ai-3-poster.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="AI-generated video 3"></video></div>
-        </figure>
-        <figure class="witem" style="--ar:0.6660">
-          <div class="wcard"><img src="assets/work/ai-4.jpg" alt="AI-generated beauty editorial image" width="999" height="1500" loading="lazy" decoding="async"></div>
         </figure>
     </div>
   </section>
